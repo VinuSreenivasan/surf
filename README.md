@@ -15,16 +15,12 @@ With anaconda do the following:
 
 ```
 conda create --name ytopt -c intel intelpython3_core python=3.6
-source activate ytopt
+conda activate ytopt
 conda install h5py
 conda install scikit-learn
 conda install pandas
 conda install mpi4py
-conda install -c conda-forge keras
 conda install -c conda-forge scikit-optimize
-git clone https://github.com/scikit-optimize/scikit-optimize.git
-cd scikit-optimize
-pip install -e.
 ```
 Usage
 =====
