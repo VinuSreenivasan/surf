@@ -46,7 +46,7 @@ def readResults(fname, evalnum):
                         #print(line)
                         str1 = line.rstrip('\n')
                         res = re.findall('INPUT:(.*)', str1)
-                        resDict['x'] = eval(res[0])
+                        resDict['x'] = str(res[0])
                 if len(resDict.keys()) == 5:
                     key = os.path.basename(fname)
                     resDict['key'] = key
@@ -60,22 +60,40 @@ def readResults(fname, evalnum):
     return(resDict)
 
 def commandLine(x, params):
-    cmd = ''
-    hlist = []
+    cmd = {}
     for p, v in zip(params, x):
-        cmd = cmd + ('--%s %s ') % (p, str(v))
-    #print(cmd)
+        cmd[p] = v
     return(cmd)
 
-def evaluate(x, evalCounter, params, prob_dir, job_dir, result_dir):
+def generate(cmd, inputfile, outputfile):
+    with open(inputfile, "r") as f1:
+        buf = f1.readlines()
+            
+    with open(outputfile, "w") as f2:
+        for key, value in cmd.items():
+            for line in buf:
+                if key not in line:
+                    f2.write(line)
+                elif key in line:
+                    f2.write(value)
+                    f2.write("\n")
+
+def evaluate(x, evalCounter, params, prob_dir, job_dir, tmp_dir, result_dir):
     cmd = commandLine(x, params)
+    sourcefile = prob_dir+'/source.c'
+    interimfile = tmp_dir+'/%05d.c' % evalCounter
+    generate(cmd, sourcefile, interimfile)
+
     jobfile = job_dir+'/%05d.job' % evalCounter
     outputfile = result_dir+'/%05d.dat' % evalCounter
+
     filein = open(prob_dir+'/job.tmpl')
     src = Template(filein.read())
     inpstr = str(x)
-    d = {'outputfile': outputfile, 'inpstr': inpstr, 'cmd': cmd, 'ompn':x[0]}
+    tmpfile = interimfile
+    d = {'outputfile': outputfile, 'inpstr': inpstr, 'tmpfile': tmpfile}
     result = src.substitute(d)
+
     with open(jobfile, "w") as jobFile:
         jobFile.write(result)
     status = subprocess.check_output('chmod +x %s' % jobfile, shell=True)
@@ -84,5 +102,3 @@ def evaluate(x, evalCounter, params, prob_dir, job_dir, result_dir):
     #print(resDict)
 
     return(resDict)
-
-    

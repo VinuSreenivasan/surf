@@ -9,9 +9,9 @@ outputfile=$outputfile
 ut=$$(date '+%s')
 echo START TIME:$$ut > $outputfile
 echo INPUT:"$inpstr" >> $outputfile
-python ../benchmarks/prob/executable.py $cmd >> $outputfile
+clang $tmpfile >> $outputfile
 ut=$$(date '+%s')
 echo END TIME:$$ut>> $outputfile
-echo 
+echo
 
 

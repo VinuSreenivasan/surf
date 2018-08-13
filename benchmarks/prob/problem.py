@@ -3,16 +3,16 @@ class Problem():
     def __init__(self):
         space = OrderedDict()
         #problem specific parameters
-        space['p1'] = (2, 10)
-        space['p2'] = (8, 1024)
-        space['p3'] = [2 , 4, 8, 16, 32, 64, 128]
-        space['p4'] = ['a', 'b', 'c']
+        space['LOOP1'] = ["#pragma unroll","#pragma clang loop id(myloop)","#pragma nounroll"]
+        #space['loop2'] = ["#pragma clang loop fuse", "#pragma clang loop peel"]
+        #space['loop3'] = ["#pragma clang loop split", "#pragma clang loop distribute"]
+        #space['loop4'] = ["#pragma clang loop specialize", "#pragma clang loop permute"]
         self.space = space
         self.params = self.space.keys()
-        self.starting_point = [10, 1000, 64, 'c']
+        self.starting_point = ["#pragma unroll"]
 
 if __name__ == '__main__':
     instance = Problem()
     print(instance.space)
     print(instance.params)
-
+    print(instance.starting_point)
