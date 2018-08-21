@@ -6,12 +6,14 @@
 
 outputfile=$outputfile
 
-ut=$$(date '+%s')
-echo START TIME:$$ut > $outputfile
+st=$$(date '+%s')
+echo START TIME:$$st > $outputfile
 echo INPUT:"$inpstr" >> $outputfile
 clang $tmpfile >> $outputfile
-ut=$$(date '+%s')
-echo END TIME:$$ut>> $outputfile
+et=$$(date '+%s')
+echo END TIME:$$et>> $outputfile
+run=$$((et-st))
+echo OUTPUT:$$run >> $outputfile
 echo
 
 

@@ -152,7 +152,7 @@ if rank == 0:
             resultsList.append(result)
             x = result['x']
             y = result['cost']
-            print(result)
+            #print(result)
             
             """opt.tell(x, y)
             percent_improv = -100*(y - curr_best)/curr_best

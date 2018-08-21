@@ -70,13 +70,15 @@ def generate(cmd, inputfile, outputfile):
         buf = f1.readlines()
             
     with open(outputfile, "w") as f2:
-        for key, value in cmd.items():
-            for line in buf:
-                if key not in line:
-                    f2.write(line)
-                elif key in line:
+        for line in buf:
+            flag = 0
+            for key, value in cmd.items():
+                if key in line:
+                    flag = 1
                     f2.write(value)
                     f2.write("\n")
+            if flag == 0:
+                f2.write(line)
 
 def evaluate(x, evalCounter, params, prob_dir, job_dir, tmp_dir, result_dir):
     cmd = commandLine(x, params)
