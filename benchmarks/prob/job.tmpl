@@ -8,7 +8,7 @@ outputfile=$outputfile
 
 st=$$(date '+%s')
 echo START TIME:$$st > $outputfile
-echo INPUT:"$inpstr" >> $outputfile
+echo INPUT:$inpstr >> $outputfile
 clang $tmpfile >> $outputfile
 et=$$(date '+%s')
 echo END TIME:$$et>> $outputfile

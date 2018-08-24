@@ -46,7 +46,11 @@ def readResults(fname, evalnum):
                         #print(line)
                         str1 = line.rstrip('\n')
                         res = re.findall('INPUT:(.*)', str1)
-                        resDict['x'] = str(res[0])
+                        tmpVal = res[0]
+                        tmpVal = tmpVal[1:-1]
+                        newVal = tmpVal.split(',')
+                        newVal = [x.strip() for x in newVal]
+                        resDict['x'] = newVal
                 if len(resDict.keys()) == 5:
                     key = os.path.basename(fname)
                     resDict['key'] = key

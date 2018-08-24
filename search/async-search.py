@@ -152,9 +152,9 @@ if rank == 0:
             resultsList.append(result)
             x = result['x']
             y = result['cost']
-            #print(result)
-            
-            """opt.tell(x, y)
+            opt.tell(x, y)
+            if y == 0:#TODO
+                y = 1
             percent_improv = -100*(y - curr_best)/curr_best
             if y < curr_best:
                 if percent_improv >= delta or curr_best==math.inf:
@@ -162,15 +162,15 @@ if rank == 0:
                     last_imp = 0
             else:
                 last_imp = last_imp+1
-            print('curr_best={} percent_improv={} patience={}/{}'.format(curr_best, percent_improv, last_imp, patience))"""
+            print('curr_best={} percent_improv={} patience={}/{}'.format(curr_best, percent_improv, last_imp, patience))
         elif tag == tags.EXIT:
             print('Worker {} exited.'.format(source))
             closed_workers = closed_workers + 1
     print('Search finished..')
-    """y_best = np.min(opt.yi)
+    y_best = np.min(opt.yi)
     best_index = np.where(opt.yi==y_best)[0][0]
     x_best = opt.Xi[best_index]
-    print('Best: x = {}; y={}'.format(y_best, x_best))"""
+    print('Best: x = {}; y={}'.format(y_best, x_best))
     saveResults(resultsList, results_json_fname, results_csv_fname)
 else:
     # Worker processes execute code below
