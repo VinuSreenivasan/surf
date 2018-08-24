@@ -54,26 +54,6 @@ mpiexec -np 2 python async-search.py --prob_dir=../benchmarks/prob  --exp_dir=..
 ```
 How to define your own autotuning problem
 =========================================
-This will be illustrated with the example in /benchmarks/prob directory. 
-
-In this example, we want to tune the executable.py that gets four command line parameters and returns the output value
-```
-python executable.py --help
-usage: executable.py [-h] [--p1 [P1]] [--p2 [P2]] [--p3 [P3]] [--p4 [P4]]
-
-optional arguments:
-  -h, --help  show this help message and exit
-  --p1 [P1]   parameter p1 value
-  --p2 [P2]   parameter p2 value
-  --p3 [P3]   parameter p3 value
-  --p4 [P4]   parameter p4 value
-```
-For example, 
-```
-python executable.py --p1=2 --p2=2 --p3=4 --p4=a
-OUTPUT:16.000
-```
-
 The search space and a default starting point is defined in problem.py
 
 ```
@@ -107,4 +87,4 @@ Third, define how to read the results in
 def readResults(fname, evalnum):
 ```
 
-Finally, in job.tmpl, call the executable (see the example)
+Finally, in job.tmpl, add the required functionality.
