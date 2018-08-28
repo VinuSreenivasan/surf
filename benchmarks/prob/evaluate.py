@@ -44,6 +44,7 @@ def readResults(fname, evalnum):
                         resDict['endTime'] = int(res[0])
                     elif pattern4.search(line) is not None:
                         #print(line)
+                        #Need to process the inputs properly to create a list
                         str1 = line.rstrip('\n')
                         res = re.findall('INPUT:(.*)', str1)
                         tmpVal = res[0]
@@ -63,12 +64,14 @@ def readResults(fname, evalnum):
     #print(resDict)
     return(resDict)
 
+#Creating a dictionary using x, params 
 def commandLine(x, params):
     cmd = {}
     for p, v in zip(params, x):
         cmd[p] = v
     return(cmd)
 
+#Replace the Macros in the source file with the corresponding Pragma values
 def generate(cmd, inputfile, outputfile):
     with open(inputfile, "r") as f1:
         buf = f1.readlines()
@@ -96,6 +99,7 @@ def evaluate(x, evalCounter, params, prob_dir, job_dir, tmp_dir, result_dir):
     filein = open(prob_dir+'/job.tmpl')
     src = Template(filein.read())
     inpstr = str(x)
+    #Storing modified source files in the directory
     tmpfile = interimfile
     d = {'outputfile': outputfile, 'inpstr': inpstr, 'tmpfile': tmpfile}
     result = src.substitute(d)
