@@ -1,0 +1,19 @@
+#!/bin/bash -x
+#COBALT -n 1
+#COBALT -q debug-flat-quad
+#COBALT -A Performance
+#COBALT -t 30
+
+outputfile=../experiments//exp-01/results/00001.dat
+
+st=$(date '+%s')
+echo START TIME:$st > ../experiments//exp-01/results/00001.dat
+echo INPUT:['#pragma clang loop id(myloop)'] >> ../experiments//exp-01/results/00001.dat
+clang ../experiments//exp-01/tmp_files/00001.c >> ../experiments//exp-01/results/00001.dat
+et=$(date '+%s')
+echo END TIME:$et>> ../experiments//exp-01/results/00001.dat
+run=$((et-st))
+echo OUTPUT:$run >> ../experiments//exp-01/results/00001.dat
+echo
+
+
