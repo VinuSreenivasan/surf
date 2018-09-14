@@ -87,4 +87,8 @@ Third, define how to read the results in
 def readResults(fname, evalnum):
 ```
 
+And you have a helper function in evaluate.py to replace loop marker with corresponding pragma,
+```
+def generate(cmd, inputfile, outputfile)
+```
 Finally, in job.tmpl, add the required functionality.
