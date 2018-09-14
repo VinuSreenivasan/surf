@@ -62,13 +62,10 @@ class Problem():
     def __init__(self):
         space = OrderedDict()
         #problem specific parameters
-        space['p1'] = (2, 10)
-        space['p2'] = (8, 1024)
-        space['p3'] = [2 , 4, 8, 16, 32, 64, 128]
-        space['p4'] = ['a', 'b', 'c']
+        space['LOOP1'] = ["#pragma unroll","#pragma nounroll","#pragma clang loop id(myloop)"]
         self.space = space
         self.params = self.space.keys()
-        self.starting_point = [2, 8, 2, 'c']
+        self.starting_point = ["#pragma unroll"]
 ```
 In evalaute.py, you have to define three functions.
 
@@ -91,4 +88,5 @@ And you have a helper function in evaluate.py to replace loop marker with corres
 ```
 def generate(cmd, inputfile, outputfile)
 ```
+
 Finally, in job.tmpl, add the required functionality.
