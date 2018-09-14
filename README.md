@@ -7,6 +7,8 @@ experiments
     directory for saving the running the experiments and storing the results
 search
     directory for source files
+Source
+    The program we want to tune should in /benchmarks/prob/ directory in the name of "source.c"
 ```
 Install instructions
 ====================
