@@ -73,12 +73,12 @@ In evalaute.py, you have to define three functions.
 
 First, define how to construct the command line in 
 ```
-def commandLine(x, params) 
+def commandLine(x, params):
 ```
 
 Second, define how to evalaute a point in
 ```
-def evaluate(x, evalCounter, params, prob_dir, job_dir, result_dir): 
+def evaluate(x, evalCounter, params, prob_dir, job_dir, tmp_dir, result_dir):
 ```
 
 Third, define how to read the results in 
@@ -88,7 +88,7 @@ def readResults(fname, evalnum):
 
 And you have a helper function in evaluate.py to replace loop marker with corresponding pragma,
 ```
-def generate(cmd, inputfile, outputfile)
+def generate(cmd, inputfile, outputfile):
 ```
 
 Finally, in job.tmpl, add the required functionality.
