@@ -9,7 +9,7 @@ outputfile=$outputfile
 st=$$(date '+%s')
 echo START TIME:$$st > $outputfile
 echo INPUT:$inpstr >> $outputfile
-clang $tmpfile >> $outputfile
+clang -fopenmp -lm $tmpfile >> $outputfile
 et=$$(date '+%s')
 echo END TIME:$$et>> $outputfile
 run=$$((et-st))
