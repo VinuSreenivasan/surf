@@ -101,7 +101,8 @@ def evaluate(x, evalCounter, params, prob_dir, job_dir, tmp_dir, result_dir):
     inpstr = str(x)
     #Storing modified source files in the directory
     tmpfile = interimfile
-    d = {'outputfile': outputfile, 'inpstr': inpstr, 'tmpfile': tmpfile}
+    tmpbinary = tmpfile[:-2]
+    d = {'outputfile': outputfile, 'inpstr': inpstr, 'tmpfile': tmpfile, 'tmpbinary': tmpbinary}
     result = src.substitute(d)
 
     with open(jobfile, "w") as jobFile:
