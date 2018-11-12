@@ -6,11 +6,11 @@
 
 outputfile=$outputfile
 
+echo INPUT:$inpstr > $outputfile
+clang -fopenmp -lm $tmpfile -o $tmpbinary
 st=$$(date '+%s')
-echo START TIME:$$st > $outputfile
-echo INPUT:$inpstr >> $outputfile
-clang -fopenmp -lm $tmpfile -o $tmpbinary >> $outputfile
-./$tmpbinary
+echo START TIME:$$st >> $outputfile
+./$tmpbinary 16 1 16 400 32 1 100
 et=$$(date '+%s')
 echo END TIME:$$et>> $outputfile
 run=$$((et-st))

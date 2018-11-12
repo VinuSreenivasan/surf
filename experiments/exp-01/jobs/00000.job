@@ -6,10 +6,11 @@
 
 outputfile=../experiments//exp-01/results/00000.dat
 
+echo INPUT:['#pragma omp parallel for private (pidx) schedule(static)', '#pragma omp parallel for private (pidx) schedule(dynamic)'] > ../experiments//exp-01/results/00000.dat
+clang -fopenmp -lm ../experiments//exp-01/tmp_files/00000.c -o ../experiments//exp-01/tmp_files/00000
 st=$(date '+%s')
-echo START TIME:$st > ../experiments//exp-01/results/00000.dat
-echo INPUT:['#pragma unroll'] >> ../experiments//exp-01/results/00000.dat
-clang ../experiments//exp-01/tmp_files/00000.c >> ../experiments//exp-01/results/00000.dat
+echo START TIME:$st >> ../experiments//exp-01/results/00000.dat
+./../experiments//exp-01/tmp_files/00000 16 1 16 400 32 1 100
 et=$(date '+%s')
 echo END TIME:$et>> ../experiments//exp-01/results/00000.dat
 run=$((et-st))

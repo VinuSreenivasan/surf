@@ -1,4 +1,4 @@
-START TIME:1535096467
-INPUT:[#pragma clang loop id(myloop)]
-END TIME:1535096467
-OUTPUT:0
+INPUT:[#pragma omp parallel for private (pidx) schedule(dynamic), #pragma omp parallel for private (pidx) schedule(static)]
+START TIME:1542018990
+END TIME:1542019018
+OUTPUT:28

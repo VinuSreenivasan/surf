@@ -1,4 +1,4 @@
-START TIME:1535096466
-INPUT:[#pragma unroll]
-END TIME:1535096467
-OUTPUT:1
+INPUT:[#pragma omp parallel for private (pidx) schedule(static), #pragma omp parallel for private (pidx) schedule(dynamic)]
+START TIME:1542018960
+END TIME:1542018989
+OUTPUT:29
