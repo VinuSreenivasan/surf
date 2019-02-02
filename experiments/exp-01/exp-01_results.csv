@@ -1,5 +1,0 @@
-evalnum,startTime,endTime,cost,x,key,status,start_time,end_time
-0,1542018960,1542018989,29.0,"['#pragma omp parallel for private (pidx) schedule(static)', '#pragma omp parallel for private (pidx) schedule(dynamic)']",00000.dat,0,0.0027396678924560547,29.982707023620605
-1,1542018990,1542019018,28.0,"['#pragma omp parallel for private (pidx) schedule(dynamic)', '#pragma omp parallel for private (pidx) schedule(static)']",00001.dat,0,29.982969522476196,59.45256280899048
-2,1542019019,1542019046,27.0,"['#pragma omp parallel for private (pidx) schedule(static)', '#pragma omp parallel for private (pidx) schedule(static)']",00002.dat,0,59.45273447036743,86.87621688842773
-3,1542019047,1542019077,30.0,"['#pragma omp parallel for private (pidx) schedule(dynamic)', '#pragma omp parallel for private (pidx) schedule(dynamic)']",00003.dat,0,86.87639999389648,118.38152503967285
