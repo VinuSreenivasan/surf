@@ -1,4 +1,0 @@
-INPUT:[#pragma omp parallel for private (pidx) schedule(static), #pragma omp parallel for private (pidx) schedule(static)]
-START TIME:1542019019
-END TIME:1542019046
-OUTPUT:27
