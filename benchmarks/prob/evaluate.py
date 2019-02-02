@@ -90,7 +90,17 @@ def generate(cmd, inputfile, outputfile):
 
 def evaluate(x, evalCounter, params, prob_dir, job_dir, tmp_dir, result_dir):
     cmd = commandLine(x, params)
-    sourcefile = prob_dir+'/source.c'
+    binary_options = "" 
+    configfile = prob_dir+'/config.txt'
+
+    # Reading options from config file
+    with open(configfile, "r") as fp:
+        for i, line in enumerate(fp):
+            if i == 0: # bencemark source path
+                sourcefile = line.rstrip()
+            if i == 1: # options to run binary
+                binary_options = line.rstrip()
+
     interimfile = tmp_dir+'/%05d.c' % evalCounter
     generate(cmd, sourcefile, interimfile)
 
@@ -103,7 +113,7 @@ def evaluate(x, evalCounter, params, prob_dir, job_dir, tmp_dir, result_dir):
     #Storing modified source files in the directory
     tmpfile = interimfile
     tmpbinary = tmpfile[:-2]
-    d = {'outputfile': outputfile, 'inpstr': inpstr, 'tmpfile': tmpfile, 'tmpbinary': tmpbinary}
+    d = {'outputfile': outputfile, 'inpstr': inpstr, 'tmpfile': tmpfile, 'tmpbinary': tmpbinary, 'binary_options': binary_options}
     result = src.substitute(d)
 
     with open(jobfile, "w") as jobFile:

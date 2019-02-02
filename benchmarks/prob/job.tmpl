@@ -10,7 +10,7 @@ echo INPUT:$inpstr > $outputfile
 clang -fopenmp -lm $tmpfile -o $tmpbinary
 st=$$(date '+%s')
 echo START TIME:$$st >> $outputfile
-./$tmpbinary
+./$tmpbinary $binary_options
 et=$$(date '+%s')
 echo END TIME:$$et>> $outputfile
 run=$$((et-st))
