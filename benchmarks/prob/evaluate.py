@@ -82,9 +82,10 @@ def generate(cmd, inputfile, outputfile):
             for key, value in cmd.items():
                 if key in line:
                     flag = 1
-                    f2.write(value)
+                    if value != "*": #For empty string options
+                        f2.write(value)
                     f2.write("\n")
-            if flag == 0:
+            if flag == 0: #To avoid writing the Marker
                 f2.write(line)
 
 def evaluate(x, evalCounter, params, prob_dir, job_dir, tmp_dir, result_dir):
