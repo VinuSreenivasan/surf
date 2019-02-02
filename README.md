@@ -4,11 +4,11 @@ Directory structure
 benchmarks
     directory for problems
 experiments
-    directory for saving the running the experiments and storing the results
+    directory for running the experiments and storing the results
 search
     directory for source files
     
-Note: The program we want to tune should in /benchmarks/prob/ directory in the name of "source.c"
+Note: We should mention the benchmark source path and binary options in /benchmarks/prob/config.txt
 ```
 Install instructions
 ====================
