@@ -5,6 +5,7 @@ class Problem():
         #problem specific parameters
         space['LOOP1'] = ["#pragma omp parallel for"]
         space['LOOP2'] = ["#pragma omp parallel for"]
+        # For empty string option, add '*' as one of the parameter value. For example, space['LOOP3'] = ["#pragma omp simd", "*"]
         space['LOOP3'] = ["#pragma omp simd"]
         self.space = space
         self.params = self.space.keys()
