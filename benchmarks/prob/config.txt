@@ -1,1 +1,2 @@
 /home/vinu/workspace/surf/surf_git_clone/benchmarks/prob/27stencil.c
+--reps 5
